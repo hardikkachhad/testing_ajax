@@ -40,9 +40,10 @@ class ProductController extends Controller
            if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
-            $image->move
-            # code...
+            $image->move('admin_assets/uploads/',$filename);
+            $product->image = $filename;# code...
            }
+           $product->save();
         } else {
            return response()->json([
                 'status' =>false,
