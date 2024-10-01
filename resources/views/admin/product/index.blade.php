@@ -63,8 +63,10 @@
                                                 <td>{{++$key}}</td>
                                                 <td>{{$product->category->category}}</td>
                                                 <td>{{$product->pname}}</td>
-                                                <td>1</td>
-                                                <td>2</td>
+                                                <td>{{$product->pprice}}</td>
+                                                <td>
+                                                    <img src="{{url('admin_assets/uploads/',$product->image)}}" alt="abc" srcset="" style="width: 50px">
+                                                </td>
                                                 <td>3</td>
                                                 <td>
                                                   <a href=""><i class="fa-solid fa-trash"></i></a>
