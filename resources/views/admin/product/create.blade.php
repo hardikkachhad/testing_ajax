@@ -52,11 +52,11 @@
                                             placeholder="Enter Your Product Image">
                                         <p></p>
                                     </div>
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label class="form-label">Product MultiImage</label>
                                         <input type="file" class="form-control" name="images[]" id="images" multiple>
                                         <p></p>
-                                    </div>
+                                    </div> --}}
                                     <div>
                                         <button type="submit" class="btn btn-primary w-md">Submit</button>
                                     </div>
@@ -104,9 +104,9 @@
                         .addClass('invalid-feedback')
                         .html(errors.product)
                     } else {
-                        $('#product').addClass('is-invalid')
+                        $('#product').removeClass('is-invalid')
                         .siblings('p')
-                        .addClass('invalid-feedback')
+                        .removeClass('invalid-feedback')
                         .html('')
                     }
                     if (errors.sale) {

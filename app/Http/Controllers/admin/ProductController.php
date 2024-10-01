@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     public function index(){
-        return view("admin.product.index");
+        $products = Product::with('category')->orderBy("id","desc")->paginate(10);
+        return view("admin.product.index",compact("products"));
     }
     public function create(){
         $category = Category::get();
@@ -23,13 +24,13 @@ class ProductController extends Controller
             "product" => "required",
             'sale' => 'required',
             'image'=> 'required',
-            'images' => 'required',
+            // 'images' => 'required',
         ],[
             "category"=> "Category is Empty",
             "product" => "Product name is Empty",
             "sale"=> "sale price is Empty",
             "image"=> "image is Empty",
-            'images' => 'product images is Empty',
+            // 'images' => 'product images is Empty',
         ]);
 
         if ($validate->passes()) {
@@ -44,6 +45,10 @@ class ProductController extends Controller
             $product->image = $filename;# code...
            }
            $product->save();
+           return response()->json([
+            'status' => true,
+            'errors' => $validate->errors()
+        ]);
         } else {
            return response()->json([
                 'status' =>false,

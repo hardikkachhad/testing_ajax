@@ -57,11 +57,12 @@
 
 
                                     <tbody>
-                                 
+                                        @foreach ($products as $key => $product)
+                                                
                                             <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
+                                                <td>{{++$key}}</td>
+                                                <td>{{$product->category->category}}</td>
+                                                <td>{{$product->pname}}</td>
                                                 <td>1</td>
                                                 <td>2</td>
                                                 <td>3</td>
@@ -70,6 +71,7 @@
                                                   <a href="">   <i class="fa-sharp fa-regular fa-pen-to-square"></i></a>
                                                 </td>
                                             </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
 
